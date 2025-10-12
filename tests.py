@@ -1,5 +1,4 @@
-# from functions.get_files_info import get_files_info
-from functions.get_file_content import get_file_content
+#from functions.get_files_info import get_files_info
 
 # def main():
 #     print("Result for current directory:")
@@ -13,7 +12,11 @@ from functions.get_file_content import get_file_content
 
 #     print("\nResult for '../' directory:")
 #     print(get_files_info("calculator", "../"))
+
+from functions.get_file_content import get_file_content
+
 def main():
+    # print(get_file_content("calculator", "lorem.txt"))
     print("Result for current directory:")
     print(get_file_content("calculator", "main.py"))
 
