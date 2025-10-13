@@ -1,6 +1,8 @@
 import os
 import subprocess
+import sys
 from subprocess import CompletedProcess
+
 
 def run_python_file(working_directory, file_path, args=[]):
     abs_work = os.path.abspath(working_directory)
@@ -14,7 +16,8 @@ def run_python_file(working_directory, file_path, args=[]):
         return f'Error: "{file_path}" is not a Python file.'
     else:
         try:
-            completed_process = subprocess.run(args, timeout=30, capture_output=True, cwd=abs_work)
+            cmd = [sys.executable, abs_full, *args] # assign our interpreter for the program, giving path for our executable and opt args
+            completed_process = subprocess.run(cmd, timeout=30, capture_output=True, cwd=abs_work, text=True) 
             if completed_process.returncode != 0:
                 return f"Process exited with code {completed_process.returncode}"
             if not isinstance(completed_process, CompletedProcess):

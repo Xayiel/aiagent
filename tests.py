@@ -41,5 +41,27 @@
 #     print("\nResult for current directory:")
 #     print(write_file("calculator", "/tmp/temp.txt", "this should not be allowed"))
 
+from functions.run_python_file import run_python_file
+
+def main():
+    print("1. Result for main.py, should print instructions")
+    print(run_python_file("calculator", "main.py"))
+
+    print("\n2. Result for main.py, [3 + 5], should return calculator")
+    print(run_python_file("calculator", "main.py", ["3 + 5"]))
+
+    print("\n3. Result for tests.py")
+    print(run_python_file("calculator", "tests.py"))
+
+    print("\n4. Results for ../main.py, should error")
+    print(run_python_file("calculator", "../main.py"))
+
+    print("\n5. Result for nonexis.py, should error")
+    print(run_python_file("calculator", "nonexistent.py"))
+
+    print("\n6. Result for lorem.txt, should error")
+    print(run_python_file("calculator", "lorem.txt"))
+
+
 if __name__ == "__main__":
     main()
