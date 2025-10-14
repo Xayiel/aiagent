@@ -29,7 +29,7 @@ schema_write_file = types.FunctionDeclaration(
         properties={
             "working_directory": types.Schema(
                 type=types.Type.STRING,
-                description="The working directory, the directory in which we are, our Python file that we want to run should be in here."
+                description="The working directory, the directory in which we are, our Python file that we want to run should be in here, use '.' if a directory isn't provided."
             ),
             "file_path": types.Schema(
                 type=types.Type.STRING,
@@ -37,7 +37,7 @@ schema_write_file = types.FunctionDeclaration(
             ),
             "content": types.Schema(
                 type=types.Type.STRING,
-                description="A string of content provided by the user, which we will use to write to our given file."
+                description="A string of content provided by the user, which we will use to write to our given file, it should contain our content and is not a file path or working directory."
             ),
         },
         required=["working_directory", "file_path", "content"]
