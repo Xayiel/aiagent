@@ -24,8 +24,8 @@ messages = [
 ]
 
 def main():
-    available_functions = types.Tool(function_declarations=[schema_get_files_info,]),
-    config = types.GenerateContentConfig(tools=[available_functions], system_instruction=system_prompt),
+    available_functions = types.Tool(function_declarations=[schema_get_files_info,])
+    config = types.GenerateContentConfig(tools=[available_functions], system_instruction=system_prompt)
     response = client.models.generate_content(model="gemini-2.0-flash-001", contents=messages, config=config)
     usage = response.usage_metadata
     
