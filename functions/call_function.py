@@ -11,8 +11,8 @@ def call_function(function_call_part, verbose=False): # function call part is a 
     function_name = function_call_part.name
     function_args = function_call_part.args.copy()
     function_args.update({"working_directory":"./calculator"})
-   
     function_map = {"get_file_content":get_file_content, "get_files_info":get_files_info, "run_python_file":run_python_file, "write_file":write_file}
+    func = function_map.get(function_name)
 
     if func is None:
         return types.Content(
@@ -25,7 +25,6 @@ def call_function(function_call_part, verbose=False): # function call part is a 
             ],
         )
     else:
-        func = function_map.get(function_name)
         function_result = func(**function_args)
         return types.Content(
             role="tool",
